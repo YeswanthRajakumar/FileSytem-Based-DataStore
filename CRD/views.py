@@ -25,21 +25,16 @@ class CreateData(MethodView):
 
 
 class ReadData(MethodView):
-    #initializing DB while invoked
-    def __init__(self,db_path):
+    def __init__(self, db_path):
         self.db_path = db_path
 
-    # Read is GET method
     def get(self):
         key = request.args.get('key')
-        # If given is not found
-        if key is None: 
-            return jsonify({"STATUS": "error", "MESSAGE": "key is required as a query param."}), 400
+        if key is None:
+            return jsonify({"status": "error", "message": "key is required as a query param."}), 400
 
-        # Read data from the datasource with the key if key is Present
+        # Read data from the datasource with the key(data index).
         data_found, message = DataStoreCRD().check_read_data(key, self.db_path)
-
-        # If no data with given Key is Found
         if not data_found:
             return jsonify({"status": "error", "message": message}), 404
 
