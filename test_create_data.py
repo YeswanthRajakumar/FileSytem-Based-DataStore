@@ -1,7 +1,7 @@
 from sys import exit
 from argparse import ArgumentParser
 from configs import configurations
-from utils.filehandler import FilePreprocess
+from filehandler import FilePreprocess
 from CRD.functions import DataStoreCRD
 
 
