@@ -30,6 +30,7 @@ class ReadData(MethodView):
 
     def get(self):
         key = request.args.get('key')
+        print(key)
         if key is None:
             return jsonify({"status": "error", "message": "key is required as a query param."}), 400
 
@@ -39,10 +40,11 @@ class ReadData(MethodView):
             return jsonify({"status": "error", "message": message}), 404
         return jsonify(message), 200
 
+
 class DeleteData(MethodView):
     def __init__(self, db_path):
         self.db_path = db_path
-    
+
 
 
 class Home(MethodView):
