@@ -4,8 +4,9 @@ from sys import exit
 from flask import Flask
 from argparse import ArgumentParser
 from configs import settings, configurations
-from utils.filehandler import FilePreprocess
-from CRD.views import CreateData, ReadData, DeleteData, Home
+from filehandler import FilePreprocess
+from CRD.functions import DataStoreCRD
+from CRD.views import CreateData,DataStoreCRD,DeleteData,Home,ReadData
 
 
 # Adding/Enabling CommandLineArguments: --datastore
@@ -39,6 +40,7 @@ app.config['SECRET_KEY'] = settings.SECRET_KEY
 # API Endpoints
 app.add_url_rule('/', view_func = Home.as_view('show'), methods=['GET'])
 app.add_url_rule('/datastore/create', view_func=CreateData.as_view('create', db_path), methods=['POST'])
+app.add_url_rule('/datastore/read', view_func=ReadData.as_view('read', db_path), methods=['GET'])
 
 
 # Initiates Flask Server

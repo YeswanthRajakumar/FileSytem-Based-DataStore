@@ -37,5 +37,17 @@ class ReadData(MethodView):
         data_found, message = DataStoreCRD().check_read_data(key, self.db_path)
         if not data_found:
             return jsonify({"status": "error", "message": message}), 404
-
         return jsonify(message), 200
+
+class DeleteData(MethodView):
+    def __init__(self, db_path):
+        self.db_path = db_path
+    
+
+
+class Home(MethodView):
+         def __init__(self):
+            self.value = 1
+
+         def get(self):
+                return  "<h1>Welcome to Home Page</h1> <span><b>(Use postman)</b></span> <p>Create :  /datastore/create</p> <p> Read :  /datastore/read</p> <p> Delete :  /datastore/delete</p>"
