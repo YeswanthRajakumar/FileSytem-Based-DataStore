@@ -41,6 +41,8 @@ app.config['SECRET_KEY'] = settings.SECRET_KEY
 app.add_url_rule('/', view_func = Home.as_view('show'), methods=['GET'])
 app.add_url_rule('/datastore/create', view_func=CreateData.as_view('create', db_path), methods=['POST'])
 app.add_url_rule('/datastore/read', view_func=ReadData.as_view('read', db_path), methods=['GET'])
+app.add_url_rule('/datastore/delete', view_func=DeleteData.as_view('delete', db_path), methods=['DELETE'])
+
 
 
 # Initiates Flask Server
