@@ -1,4 +1,4 @@
-## Contains the Intructions below( How to Use)
+## Contains the Instructions Below( How to Use )
 
 
 # File - DataStore
