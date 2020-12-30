@@ -56,8 +56,7 @@ store.
 # REST API Examples
 
 
-![Create Data Image](https://raw.githubusercontent.com/YeswanthRajakumar/FileSytem-Based-DataStore/main/Functionaly_images/createData.png)
-
+![Create Data Image](https://raw.githubusercontent.com/YeswanthRajakumar/FileSytem-Based-DataStore/main/Functionaly_images/createData.png)\
 
 1. Create data in DataStore - **API**: `http://localhost:5000/datastore/create` & **Data**: `{"abc": {"data1": "value1", "data2": "value2", "data3": "value3", "Time-To-Live": 5000, "CreatedAt": "2020-02-27T05:07:53.133320"}, "def": {"data1": "value1", "data2": "value2", "data3": "value3", "Time-To-Live": 50, "CreatedAt": "2020-02-27T05:07:53.133343"}}` & **API Type**: `POST`.
 
@@ -65,12 +64,12 @@ store.
 
 ![Read Data Image](https://raw.githubusercontent.com/YeswanthRajakumar/FileSytem-Based-DataStore/main/Functionaly_images/readData.png)
 
-
 2. Read data from datastore - **API**: `http://localhost:5000/datastore/read?key=abc` & **API Type**: `GET`.
 
-
+ 
 
 ![Delete Data Image](https://raw.githubusercontent.com/YeswanthRajakumar/FileSytem-Based-DataStore/main/Functionaly_images/deleteData.png)
 
 
 3. Delete data from datastore - **API**: `http://localhost:5000/datastore/delete?key=abc` & **API Type**: `DELETE`.
+ 
