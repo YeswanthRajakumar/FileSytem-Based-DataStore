@@ -178,3 +178,26 @@ class DataStoreCRD:
         return status, data
 
 
+    def check_delete_data(self, key, db_path):
+        status, message = self.read_delete_preprocess(key, db_path)
+        if not status:
+            return status, message
+
+        datastore = path.join(db_path, DEFAULT_DB_NAME)
+
+        # Delete the data from the datastore.
+        # This action is not reversible.
+        del message[key]
+
+        # Write the new data to the datasource after data deletion.
+        with open(datastore, 'w+') as f:
+            # Make sure single process only allowed to access the file at a time.
+            # Locking file.
+            fcntl.flock(f, fcntl.LOCK_EX)
+            json.dump(message, f)
+            # Releasing the file lock.
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+        return True, "Data is deleted from the datastore."
+
+
