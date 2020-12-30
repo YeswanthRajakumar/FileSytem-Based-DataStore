@@ -45,6 +45,22 @@ class DeleteData(MethodView):
     def __init__(self, db_path):
         self.db_path = db_path
 
+    
+    def delete(self):
+        key = request.args.get('key')
+
+        if key is None:
+            return jsonify({"status": "error", "message": "key is required as a query parameter."}), 400
+
+        # Deletes a data from the datasource with the key(data index).
+        
+        data_found, message = DataStoreCRD().check_delete_data(key, self.db_path)
+        if not data_found:
+            return jsonify({"status": "error", "message": message}), 404
+
+        return jsonify({"status": "success", "message": message}), 200
+
+
 
 
 class Home(MethodView):
